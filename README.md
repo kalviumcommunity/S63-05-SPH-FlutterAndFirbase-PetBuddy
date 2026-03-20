@@ -22,3 +22,25 @@ Dart is a good fit for Flutter because it provides:
 - The stateless part is `StatelessExample`, which shows a simple text UI using a `StatelessWidget`.
 - The stateful part is `CounterExample`, which demonstrates a counter using a `StatefulWidget`.
 - Pressing the `FloatingActionButton` increments the counter by calling `setState()`, so the centered `Text` widget updates immediately.
+
+
+## Firebase Setup (Brief)
+1. Create a Firebase project in the Firebase Console.
+2. Add an Android app to Firebase and download `google-services.json`.
+3. Place `google-services.json` here: `android/app/google-services.json`.
+4. Ensure your Android `applicationId` matches the package name inside `google-services.json`.
+5. Add Firebase dependencies to `pubspec.yaml` (`firebase_core`, `firebase_auth`, `cloud_firestore`).
+6. Initialize Firebase in `main.dart` using `Firebase.initializeApp()`.
+
+## Firestore Real-time Sync (How it works)
+- This demo uses the Firestore collection `tasks`.
+- `tasksStream` uses `.snapshots()` to create a real-time stream of documents.
+- The UI uses `StreamBuilder` to listen to that stream.
+- When `addTask()` adds a new document, Firestore sends updated snapshots to the stream, and `StreamBuilder` rebuilds the list automatically.
+
+## Notes About Implementation
+- Each task document stores:
+  - `title`: the task text
+  - `createdAt`: a server timestamp
+- For real apps, you must configure Firestore Security Rules to allow the intended reads/writes.
+
