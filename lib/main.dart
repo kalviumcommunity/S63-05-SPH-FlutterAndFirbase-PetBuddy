@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -10,6 +11,11 @@ Future<void> main() async {
   // `Firebase.initializeApp()` must run before using FirebaseAuth/Firestore.
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
+=======
+import 'package:flutter/material.dart';
+
+void main() {
+>>>>>>> 2e70ae1d06f444c0b3783788eb700947b65c305c
   runApp(const MyApp());
 }
 
@@ -68,6 +74,7 @@ class CounterExample extends StatefulWidget {
 class _CounterExampleState extends State<CounterExample> {
   int _counter = 0; // Null safety: int is non-nullable by default.
 
+<<<<<<< HEAD
   // Minimal Firebase Authentication demo:
   // When the user signs up/signs in, Firebase securely stores their account credentials.
   final TextEditingController _emailController = TextEditingController();
@@ -98,6 +105,8 @@ class _CounterExampleState extends State<CounterExample> {
     });
   }
 
+=======
+>>>>>>> 2e70ae1d06f444c0b3783788eb700947b65c305c
   void _increment() {
     setState(() {
       // `setState()` triggers UI updates:
@@ -108,6 +117,7 @@ class _CounterExampleState extends State<CounterExample> {
   }
 
   @override
+<<<<<<< HEAD
   void dispose() {
     _authSub?.cancel();
     _emailController.dispose();
@@ -245,11 +255,14 @@ class _CounterExampleState extends State<CounterExample> {
   }
 
   @override
+=======
+>>>>>>> 2e70ae1d06f444c0b3783788eb700947b65c305c
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Stateless + Stateful Demo'),
       ),
+<<<<<<< HEAD
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -394,6 +407,24 @@ class _CounterExampleState extends State<CounterExample> {
             ),
           ],
         ),
+=======
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          // StatelessWidget used inside the widget tree.
+          const StatelessExample(
+            message: 'StatelessWidget example: simple text UI',
+          ),
+          const SizedBox(height: 16),
+          // Center widget with Text (required).
+          Center(
+            child: Text(
+              'Counter: $_counter',
+              style: Theme.of(context).textTheme.headlineMedium,
+            ),
+          ),
+        ],
+>>>>>>> 2e70ae1d06f444c0b3783788eb700947b65c305c
       ),
       // FloatingActionButton in the StatefulWidget example (required).
       floatingActionButton: FloatingActionButton(

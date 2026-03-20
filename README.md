@@ -23,6 +23,7 @@ Dart is a good fit for Flutter because it provides:
 - The stateful part is `CounterExample`, which demonstrates a counter using a `StatefulWidget`.
 - Pressing the `FloatingActionButton` increments the counter by calling `setState()`, so the centered `Text` widget updates immediately.
 
+
 ## Firebase Setup (Brief)
 1. Create a Firebase project in the Firebase Console.
 2. Add an Android app to Firebase and download `google-services.json`.
@@ -42,3 +43,4 @@ Dart is a good fit for Flutter because it provides:
   - `title`: the task text
   - `createdAt`: a server timestamp
 - For real apps, you must configure Firestore Security Rules to allow the intended reads/writes.
+
