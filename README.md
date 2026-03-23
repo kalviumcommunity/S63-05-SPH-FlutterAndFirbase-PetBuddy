@@ -1,33 +1,37 @@
-# PetBuddy Welcome App
+# PetBuddy Responsive Home
 
 ## Short Description
-This project is a simple Flutter app that demonstrates a basic widget structure and state updates using a `StatefulWidget`. The Welcome screen shows a title, an icon, and a button that changes its text and color using `setState()`.
+This project demonstrates a responsive Flutter UI using `MediaQuery`. The `ResponsiveHome` screen switches layouts based on screen width:
+- **Phone layout (width <= 600):** single-column view with `Wrap` for quick actions.
+- **Tablet layout (width > 600):** multi-column view with a `Row` and a `GridView`.
 
-## Folder Structure
-Inside `lib/`:
-- `lib/screens/`: App screens (UI pages).  
-  - `welcome_screen.dart`
-- `lib/widgets/`: Reusable UI widgets.  
-  - `welcome_icon.dart`
-- `lib/services/`: Empty for now (reserved for future logic).  
+It is designed to work in both **portrait and landscape** without overflowing.
 
-## Setup Steps
-1. Install Flutter (if not installed) and set up Android tooling (refer to Flutter official setup guide).
-2. Check Flutter setup:
-   - `flutter doctor`
-3. Get project dependencies:
-   - `flutter pub get`
-4. Run the app:
-   - `flutter run`
+## Responsive Logic (MediaQuery Snippet)
+```dart
+final size = MediaQuery.of(context).size;
+final width = size.width;
+final isTablet = width > 600;
 
-## Reflection
-In this assignment, I learned:
-- How Flutter builds UI using a widget tree (`MaterialApp` -> `Scaffold` -> widgets).
-- How a `StatefulWidget` updates the UI immediately by calling `setState()`.
-- How separating code into `screens/` and `widgets/` keeps the project clean and beginner-friendly.
+// Use the same build method, but choose a different layout
+// depending on screen width.
+if (isTablet) {
+  // Tablet: Row + GridView
+} else {
+  // Phone: Column + Wrap
+}
+```
 
 ## Screenshot
 Add your screenshot here:
 
-`(screenshot_placeholder.png)`
+![App Screenshot](ui.png)
+
+## Reflection (Learning Flutter & Responsiveness)
+- I learned how `MediaQuery` provides screen size and orientation information.
+- I learned how to prevent UI overflow using responsive layout choices like:
+  - `Expanded` and `Flexible` for adaptive sizing,
+  - `AspectRatio` for consistent proportions,
+  - `GridView`/`Wrap` so content reflows naturally across orientations.
+- Overall, the responsive design makes the same screen usable on phones and tablets.
 
