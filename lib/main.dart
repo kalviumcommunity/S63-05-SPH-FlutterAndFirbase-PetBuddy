@@ -1,13 +1,9 @@
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 
-import 'screens/login_screen.dart';
+import 'screens/welcome_screen.dart';
 
-Future<void> main() async {
-  // Firebase initialization:
-  // This ensures Firebase Auth/Firestore can be used safely in the app.
-  WidgetsFlutterBinding.ensureInitialized();
-  await Firebase.initializeApp();
+void main() {
+  // Entry point for the app.
   runApp(const MyApp());
 }
 
@@ -16,11 +12,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Start with Login screen. After login/signup, we navigate to dashboard.
+    // Widget tree starts here: MaterialApp -> home -> WelcomeScreen.
     return MaterialApp(
-      title: 'PetBuddy Firebase Demo',
+      title: 'PetBuddy Widget Tree Demo',
       debugShowCheckedModeBanner: false,
-      home: const LoginScreen(),
+      home: const WelcomeScreen(),
     );
   }
 }
