@@ -1,56 +1,32 @@
-# PetBuddy Firebase Auth + Firestore
+# Flutter Environment Setup and First App Run
 
-## Short Description
-This Flutter app demonstrates Firebase integration with:
-- **Firebase Authentication** (Email & Password) for signup, login, and logout.
-- **Cloud Firestore** for real-time task data using `StreamBuilder` and `.snapshots()`.
+## Steps followed
+- Installation of Flutter SDK
+  - Downloaded the Flutter SDK.
+  - Extracted it and added Flutter to the system PATH.
+- Setting up Android Studio or VS Code
+  - Installed Android Studio or VS Code.
+  - Installed Flutter and Dart plugins/extensions.
+- Running flutter doctor
+  - Ran `flutter doctor` to check if everything is configured correctly.
+  - Fixed any issues until all checks showed green.
+- Creating and running first Flutter app
+  - Created a new Flutter project.
+  - Started an Android emulator.
+  - Ran the app using `flutter run`.
 
-## Firebase Setup (Brief)
-1. Create a Firebase project in the Firebase Console.
-2. Add an Android app and download `google-services.json`.
-3. Put the file here: `android/app/google-services.json`.
-4. Enable **Email/Password** authentication:
-   - Firebase Console -> Authentication -> Sign-in method
-5. Ensure dependencies exist in `pubspec.yaml`:
-   - `firebase_core`, `firebase_auth`, `cloud_firestore`
+## Screenshots
+### Flutter Doctor output (all green checks)
+`(flutter_doctor_screenshot.png)`
 
-## Auth + Firestore Flow
-
-### Firebase Initialization
-In `lib/main.dart`, Firebase is initialized using `Firebase.initializeApp()` before any Firebase service is used.
-
-### Authentication
-- `SignupScreen` calls `AuthService.signUp(email, password)`
-- `LoginScreen` calls `AuthService.signIn(email, password)`
-- After successful auth, the app navigates to `DashboardScreen`
-- Logout on `DashboardScreen` calls `AuthService.logout()`
-
-### Firestore Real-time Updates
-`FirestoreService.tasksStream(uid)` returns a real-time stream of documents:
-- collection: `tasks`
-- filtered by `uid`
-- ordered by `createdAt`
-
-`StreamBuilder` listens to this stream, so the task list updates automatically when documents change.
-
-Example snippet:
-```dart
-Stream<QuerySnapshot<Map<String, dynamic>>> tasksStream(String uid) {
-  return FirebaseFirestore.instance
-      .collection('tasks')
-      .where('uid', isEqualTo: uid)
-      .orderBy('createdAt', descending: true)
-      .snapshots();
-}
-```
-
-## Screenshot
-Add your screenshot here:
-
-![login Screenshot](login.png)
+### Running app on emulator
+`(first_app_run_screenshot.png)`
 
 ## Reflection
-- I learned how `Firebase.initializeApp()` enables Firebase services in Flutter.
-- I learned the Auth flow (signup -> login -> dashboard -> logout) using `FirebaseAuth`.
-- I learned how Firestore `.snapshots()` plus `StreamBuilder` creates a reactive UI for real-time data.
+- Challenges faced during installation
+  - Setting the PATH correctly and ensuring tools were detected by `flutter doctor`.
+  - Making sure the emulator/device was available for running the app.
+- How this setup helps in building and testing mobile apps
+  - Flutter setup allows quick app creation and testing on an emulator/device.
+  - `flutter doctor` helps verify the environment so development is smoother.
 
