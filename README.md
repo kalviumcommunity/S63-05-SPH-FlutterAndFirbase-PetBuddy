@@ -1,5 +1,15 @@
 # Flutter Environment Setup and First App Run
 
+## Folder structure summary
+- `lib/`: main app code (Dart files)
+- `android/`: Android build configuration
+- `ios/`: iOS build configuration
+- `assets/`: images/fonts and other static files (if used)
+- `test/`: test files
+- `pubspec.yaml`: dependencies and project configuration
+
+Link: `PROJECT_STRUCTURE.md`
+
 ## Steps followed
 - Installation of Flutter SDK
   - Downloaded the Flutter SDK.
