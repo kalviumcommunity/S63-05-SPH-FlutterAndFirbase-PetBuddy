@@ -38,6 +38,60 @@ Flutter builds the UI by calling `build()` methods. When state changes (via `set
 ### Why Flutter updates only parts of UI
 When you call `setState()`, Flutter re-runs `build()` for that widget and its subtree, not the entire app. This keeps updates efficient and the UI responsive.
 
+## StatelessWidget vs StatefulWidget
+
+### Explanation
+- **StatelessWidget**: Describes UI that does not change by itself. It has no mutable state; when the parent rebuilds, `build()` runs with the same configuration unless inputs change.
+- **StatefulWidget**: Pairs a widget with a `State` object that can hold mutable data (e.g. a counter). When that data changes, you call `setState()` so Flutter rebuilds this part of the tree.
+
+### When to use each
+- Use **StatelessWidget** for static text, icons, or layouts that only depend on parameters passed in from a parent.
+- Use **StatefulWidget** when the user interacts with the UI (buttons, forms) or when values change over time and you need to call `setState()`.
+
+### Code snippets
+Stateless (static header):
+```dart
+class DemoStaticHeader extends StatelessWidget {
+  const DemoStaticHeader({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return const Text('Stateless header (does not change)');
+  }
+}
+```
+
+Stateful (counter + `setState()`):
+```dart
+class _State extends State<MyScreen> {
+  int _counter = 0;
+
+  void _increment() {
+    setState(() {
+      _counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Text('Counter: $_counter'),
+        ElevatedButton(onPressed: _increment, child: const Text('Increment')),
+      ],
+    );
+  }
+}
+```
+
+### Screenshots (Stateless / Stateful demo)
+**Before (counter at 0):** `(stateless_stateful_before.png)`  
+**After (after increment):** `(stateless_stateful_after.png)`
+
+### Reflection (Stateless vs Stateful)
+- I learned that static UI fits **StatelessWidget**, while anything that must update in response to taps needs **StatefulWidget** and `setState()`.
+- Separating a small **StatelessWidget** header from the interactive counter makes the difference between fixed and dynamic UI easy to see.
+
 ## Steps followed
 - Installation of Flutter SDK
   - Downloaded the Flutter SDK.
@@ -67,6 +121,7 @@ When you call `setState()`, Flutter re-runs `build()` for that widget and its su
 `(first_app_run_screenshot.png)`
 
 ## Reflection
+- **Stateless vs Stateful demo:** Using a header as `StatelessWidget` and a counter as `StatefulWidget` clarified when each type is appropriate.
 - Challenges faced during installation
   - Setting the PATH correctly and ensuring tools were detected by `flutter doctor`.
   - Making sure the emulator/device was available for running the app.
