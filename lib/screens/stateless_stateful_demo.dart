@@ -13,7 +13,11 @@ class DemoStaticHeader extends StatelessWidget {
       padding: EdgeInsets.only(bottom: 16),
       child: Text(
         'Stateless header (does not change)',
-        style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
+        style: TextStyle(
+          fontSize: 18, 
+          fontWeight: FontWeight.w600,
+          color: Colors.blueAccent, // UI change for Hot Reload demo
+        ),
         textAlign: TextAlign.center,
       ),
     );
@@ -36,6 +40,9 @@ class _StatelessStatefulDemoScreenState
   int _counter = 0;
 
   void _increment() {
+    // Added debugPrint to demonstrate Debug Console logs
+    debugPrint('Button clicked! Counter changing to ${_counter + 1}');
+
     // `setState()` tells Flutter to re-run `build()` for this widget subtree
     // so Text and Button reflect the new `_counter`.
     setState(() {
