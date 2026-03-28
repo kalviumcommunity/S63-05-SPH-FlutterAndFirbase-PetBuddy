@@ -4,10 +4,10 @@ project(runner LANGUAGES CXX)
 
 # The name of the executable created for the application. Change this to change
 # the on-disk name of your application.
-set(BINARY_NAME "s63_05_sph_flutterandfirbase_petbuddy")
+set(BINARY_NAME "PetBuddy")
 # The unique GTK application identifier for this application. See:
 # https://wiki.gnome.org/HowDoI/ChooseApplicationID
-set(APPLICATION_ID "com.example.s63_05_sph_flutterandfirbase_petbuddy")
+set(APPLICATION_ID "com.example.sprint_2")
 
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
 # versions of CMake.
