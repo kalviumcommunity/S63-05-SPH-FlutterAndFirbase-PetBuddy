@@ -1,10 +1,10 @@
 # Project-level configuration.
 cmake_minimum_required(VERSION 3.14)
-project(s63_05_sph_flutterandfirbase_petbuddy LANGUAGES CXX)
+project(sprint_2 LANGUAGES CXX)
 
 # The name of the executable created for the application. Change this to change
 # the on-disk name of your application.
-set(BINARY_NAME "s63_05_sph_flutterandfirbase_petbuddy")
+set(BINARY_NAME "sprint_2")
 
 # Explicitly opt in to modern CMake behaviors to avoid warnings with recent
 # versions of CMake.

@@ -1,4 +1,4 @@
-package com.company.petbuddy
+package com.example.sprint_2
 
 import io.flutter.embedding.android.FlutterActivity
 
