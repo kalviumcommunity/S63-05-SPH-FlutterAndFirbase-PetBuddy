@@ -1,42 +1,46 @@
-# Flutter Navigation Demo
+# Flutter Responsive Layout Demo
 
-## Short explanation of navigation
-In Flutter, navigation is handled by the `Navigator` widget, which manages a stack of `Route` objects to display different screens.
-- **Pushing** a route (`Navigator.pushNamed`) adds a new screen to the top of the stack, transitioning the user forwarding.
-- **Popping** a route (`Navigator.pop`) removes the current screen from the stack, smoothly returning the user to the previous screen.
-By using Named Routes configured in `main.dart`, we keep the navigation structure centralized and easy to read.
+## Short explanation
+This project demonstrates how to build a responsive user interface in Flutter using `MediaQuery` and `Expanded` widgets along with Flexbox layouts (`Row` and `Column`).
+- A static header is created using a `Container` block at the top.
+- We check the available screen width using `MediaQuery.of(context).size.width`.
+- If the app is opened on a larger screen (width > 600px), it lays out the two body sections horizontally side-by-side utilizing a `Row`.
+- On smaller screens (width <= 600px), it stacks the exact same two section widgets vertically on top of each other utilizing a `Column`.
 
-## Code snippets
+## Code snippet
 
-### 1. Defining Routes in `main.dart`
+### Controlling Layout using MediaQuery
 ```dart
-initialRoute: '/',
-routes: {
-  '/': (context) => const HomeScreen(),
-  '/second': (context) => const SecondScreen(),
-},
-```
+final screenWidth = MediaQuery.of(context).size.width;
+final isLargeScreen = screenWidth > 600;
 
-### 2. Navigating Forward (`HomeScreen`)
-```dart
-Navigator.pushNamed(context, '/second');
-```
-
-### 3. Navigating Backwards (`SecondScreen`)
-```dart
-Navigator.pop(context);
+return Expanded(
+  child: isLargeScreen 
+      ? Row(
+          children: [
+            Expanded(child: LeftSectionWidget()),
+            Expanded(child: RightSectionWidget()),
+          ],
+        )
+      : Column(
+          children: [
+            Expanded(child: TopSectionWidget()),
+            Expanded(child: BottomSectionWidget()),
+          ],
+        ),
+);
 ```
 
 ## Screenshot section
 
-### Home Screen
-![Home Screen Placeholder](placeholder_home_screen.png)  
-*(Shows the Home screen with "Go to Second Screen" button)*
+### Large Screen (Side-by-Side)
+![Large Screen Placeholder](placeholder_large_screen.png)  
+*(Shows the header at the top and the two content sections placed left-to-right using a Row)*
 
-### Second Screen
-![Second Screen Placeholder](placeholder_second_screen.png)  
-*(Shows the Second screen with "Go Back" button)*
+### Small Screen (Stacked)
+![Small Screen Placeholder](placeholder_small_screen.png)  
+*(Shows the header at the top and the two content sections ordered top-to-bottom using a Column)*
 
 ## Reflection
-Using named routes (`initialRoute` and `routes`) provides a very organized way to handle application navigation compared to defining routes on the fly within the screens themselves. 
-Because the routes are centralized in `main.dart`, the flow of the application is immediately visible to anyone reading the main application entry point. Furthermore, using `Navigator.pushNamed()` decouples screens from one another: `HomeScreen` doesn't need to import `SecondScreen` to navigate to it; it only needs to know the route string (`'/second'`). This keeps the code clean and strictly modular.
+Building responsive interfaces correctly from the start is invaluable in Flutter due to its multi-platform nature (mobile, tablet, desktop, web). 
+`MediaQuery` provides dynamic device-specific data to alter the widget tree cleanly, serving as a powerful structural tool. Similarly, the `Expanded` widget is crucial here because it efficiently sizes child widgets proportionally to fit available space, ensuring the UI elements fill the screen fully without overflowing off the edge.
