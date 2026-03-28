@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'screens/welcome_screen.dart';
+import 'screens/stateless_stateful_demo.dart';
 
 void main() {
   // Entry point for the app.
@@ -12,11 +12,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Widget tree starts here: MaterialApp -> home -> WelcomeScreen.
+    // Widget tree starts here: MaterialApp -> home -> StatelessStatefulDemoScreen.
     return MaterialApp(
       title: 'PetBuddy Widget Tree Demo',
       debugShowCheckedModeBanner: false,
-      home: const WelcomeScreen(),
+      home: const StatelessStatefulDemoScreen(),
     );
   }
 }
