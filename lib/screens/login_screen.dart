@@ -176,52 +176,57 @@ class _LoginScreenState extends State<LoginScreen>
             ),
 
             // ── Content ──
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: MediaQuery.of(context).padding.top + 40),
-
-                // ── Brand header ──
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 28),
+            Positioned.fill(
+              child: SingleChildScrollView(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    minHeight: MediaQuery.of(context).size.height,
+                  ),
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Container(
-                        padding: const EdgeInsets.all(14),
-                        decoration: BoxDecoration(
-                          color: Colors.white.withAlpha(30),
-                          borderRadius: BorderRadius.circular(18),
-                        ),
-                        child: const Icon(
-                          Icons.pets_rounded,
-                          size: 32,
-                          color: Colors.white,
+                      Padding(
+                        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top + 40),
+                        child: Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 28),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Container(
+                                padding: const EdgeInsets.all(14),
+                                decoration: BoxDecoration(
+                                  color: Colors.white.withAlpha(30),
+                                  borderRadius: BorderRadius.circular(18),
+                                ),
+                                child: const Icon(
+                                  Icons.pets_rounded,
+                                  size: 32,
+                                  color: Colors.white,
+                                ),
+                              ),
+                              const SizedBox(height: 20),
+                              Text(
+                                'Welcome\nBack 👋',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 34,
+                                  fontWeight: FontWeight.w700,
+                                  color: Colors.white,
+                                  height: 1.2,
+                                ),
+                              ),
+                              const SizedBox(height: 8),
+                              Text(
+                                'Sign in to continue caring for your pets',
+                                style: GoogleFonts.poppins(
+                                  fontSize: 14,
+                                  color: Colors.white70,
+                                ),
+                              ),
+                            ],
+                          ),
                         ),
                       ),
-                      const SizedBox(height: 20),
-                      Text(
-                        'Welcome\nBack 👋',
-                        style: GoogleFonts.poppins(
-                          fontSize: 34,
-                          fontWeight: FontWeight.w700,
-                          color: Colors.white,
-                          height: 1.2,
-                        ),
-                      ),
-                      const SizedBox(height: 8),
-                      Text(
-                        'Sign in to continue caring for your pets',
-                        style: GoogleFonts.poppins(
-                          fontSize: 14,
-                          color: Colors.white70,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-
-                const Spacer(),
 
                 // ── Bottom card with form ──
                 FadeTransition(
@@ -427,6 +432,9 @@ class _LoginScreenState extends State<LoginScreen>
                   ),
                 ),
               ],
+                  ),
+                ),
+              ),
             ),
           ],
         ),
